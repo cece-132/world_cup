@@ -18,4 +18,19 @@ class WorldCup
     end
     active
   end
+
+  def all_players_by_position
+    hash = {}
+    @teams.each do |team|
+      team.players.each do |player|
+        if !hash["#{player.position}"].nil?
+          hash["#{player.position}"] << player
+        else
+          hash["#{player.position}"] = [player]
+        end
+      end
+    end
+    hash
+  end
+
 end

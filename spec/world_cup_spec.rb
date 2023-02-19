@@ -56,4 +56,20 @@ RSpec.describe WorldCup do
     end
   end
 
+  describe '#all_players_by_position' do
+    it 'uses a hash to show all the players in the world cup sorted by position' do
+      expect(@world_cup.all_players_by_position).to be_a Hash
+      # expect(@world_cup.keys.include?("forward", "midfielder", "defender")).to eq true
+      expect(@world_cup.all_players_by_position.keys.include?("forward")).to eq true
+      expect(@world_cup.all_players_by_position.keys.include?("midfielder")).to eq true
+      expect(@world_cup.all_players_by_position.keys.include?("defender")).to eq true
+
+      expect(@world_cup.all_players_by_position["midfielder"].length).to eq 2
+      expect(@world_cup.all_players_by_position["forward"].length).to eq 1
+      expect(@world_cup.all_players_by_position["defender"].length).to eq 1
+
+      expect(@world_cup.all_players_by_position.length).to eq 3
+    end
+  end
+
 end
